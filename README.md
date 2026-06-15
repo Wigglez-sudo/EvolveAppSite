@@ -1,123 +1,109 @@
-# Evolve — landing site
+<div align="center">
 
-A mobile-first landing page for the Evolve app: what it is, the feature set,
-install instructions for iPhone and Android, food packs, and an FAQ. It matches
-the app's brand (same dark palette, gradient "E", Inter type) so the two read as
-one product.
+# 💪 Evolve
 
-## Files
+### Train smarter · Become next.
 
-```
-index.html            # the whole site (self-contained: HTML + CSS + a little JS)
-icon-512.png          # Evolve logo (used in hero, header, footer, social preview)
-apple-touch-icon.png  # home-screen icon if someone installs the *site* too
-favicon.png           # browser tab icon
-```
+**A private gym & nutrition tracker that lives entirely on your phone.**
 
-No build step, no dependencies — it's plain static files. The only external
-request is the Google Fonts stylesheet for Inter.
+`Version 1.0` · Created by **Wigglez**
 
----
+[**evolveapp.cc**](https://evolveapp.cc) · ✉️ [evolveappcc@proton.me](mailto:evolveappcc@proton.me)
 
-## 1) Point the "Open Evolve" buttons at your app
+</div>
 
-Open `index.html` and find this line near the bottom (inside `<script>`):
+-----
 
-```js
-var APP_URL = "/app/";
-```
+## What is Evolve?
 
-Set it to wherever the **actual Evolve app** is hosted. Every "Open Evolve"
-button on the page uses this one value. Pick the option that matches your setup
-(see section 3):
+Evolve is a personal **gym and nutrition tracker** you add to your phone’s home
+screen and open like any normal app. There are **no accounts, no sign-ups, no
+ads, and no servers** — everything you log stays **on your device**.
 
-| Your setup | Set APP_URL to |
-| --- | --- |
-| App in an `/app/` folder on the **same** domain | `"/app/"` |
-| App on a **subdomain** | `"https://app.evolveapp.cc/"` |
-| App on GitHub Pages | `"https://wigglez-sudo.github.io/EvolveApp/"` |
+It’s built for people who want a powerful training and food log *without*
+handing their data to a company.
 
----
+-----
 
-## 2) Host it on Cloudflare Pages (free)
+## What you can do
 
-1. Push these files to a GitHub repo (e.g. `EvolveSite`, or a `site/` folder in
-   an existing repo).
-2. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**.
-3. Pick the repo. **Framework preset: None.** Build command: leave **empty**.
-   Build output directory: `/` (or `site` if you put the files in a subfolder).
-4. **Save and Deploy.** You'll get a `*.pages.dev` URL to test.
+**🏋️ Train**
 
-## 2b) Connect your domain (evolveapp.cc)
+- Auto-build a workout by muscle group, or mix several into one session
+- Multi-day programs (Push / Pull / Legs, Upper / Lower, Full Body)
+- Supersets, plate calculator, warm-up sets and a rest timer
+- Your usual weight & reps pre-fill each set — just tap to confirm
 
-1. In Cloudflare, add `evolveapp.cc` as a site (if it isn't already) and point
-   your registrar's nameservers at Cloudflare. (Skip if the domain already lives
-   in this Cloudflare account.)
-2. In the Pages project → **Custom domains → Set up a custom domain** →
-   `evolveapp.cc` (and add `www.evolveapp.cc` too if you want).
-3. Cloudflare adds the DNS records automatically and issues HTTPS. Give it a few
-   minutes; then `https://evolveapp.cc` serves this site.
+**🍽️ Fuel**
 
-> You mentioned "redirecting" the domain. You don't need a redirect — pointing
-> the domain straight at the Pages project (above) is cleaner and gives you
-> proper HTTPS on `evolveapp.cc` itself. A redirect would just bounce visitors to
-> an ugly URL.
+- Fast plate-based food logging — add several foods, log them at once
+- Calories, protein, carbs and fat with smart portion sizes
+- Recents, favourites and repeat-a-meal for one-tap entries
+- Optional UK supermarket food packs (Tesco, Sainsbury’s, Asda, Aldi)
 
----
+**📈 Progress**
 
-## 3) Where should the *app* live? (the important decision)
+- Personal records, estimated 1RM and training-percentage tables
+- Streaks, volume and trends over time
+- Private progress photos, stored only on your device
+- Export your workouts and food to CSV any time
 
-The landing page is the front door; the app is the room behind it. For a PWA,
-**the domain the app is served from is the domain it installs under** — so this
-choice affects what users end up with on their home screen.
+**Plus:** an optional AI Coach, saved workouts, a cardio timer, encrypted
+backups, and one-tap in-app updates.
 
-**Recommended — one domain, app in `/app/`:**
-Host the app on the **same** Cloudflare Pages project, in an `app/` folder.
+-----
 
-```
-/ (repo root)
-  index.html        ← this landing page
-  icon-512.png ...
-  app/              ← the ENTIRE Evolve app goes here
-    index.html
-    app.js
-    sw.js
-    manifest.json
-    food-db/  tools/  ...
-```
+## How to install
 
-Then set `APP_URL = "/app/"`. Result: the site is `evolveapp.cc`, the app is
-`evolveapp.cc/app/`, and the PWA installs under your own domain. The app uses
-relative paths and a relative service-worker scope, so moving it into `/app/`
-needs **no code changes** — just keep every app file together inside the folder.
+Evolve is a web app, so there’s no App Store or Play Store — you add it straight
+to your home screen, where it opens full-screen and works offline.
 
-**Alternative — subdomain:**
-Keep the app as its own Pages project at `app.evolveapp.cc`, set
-`APP_URL = "https://app.evolveapp.cc/"`. Cleaner separation, but you manage two
-projects and one extra DNS record.
+### iPhone / iPad
 
-**Quickest — link to GitHub Pages:**
-Leave the app on GitHub Pages and set
-`APP_URL = "https://wigglez-sudo.github.io/EvolveApp/"`. Works immediately, but
-the app then installs under the github.io address, not your nice domain.
+1. Open **evolveapp.cc** in **Safari** (this only works in Safari, not Chrome).
+1. Tap the **Share** button (the square with an arrow).
+1. Scroll down and tap **Add to Home Screen**.
+1. Tap **Add** in the top-right.
+1. Open Evolve from its new home-screen icon.
 
----
+### Android
 
-## 4) Heads-up: renaming the repo changed the app's URL
+1. Open **evolveapp.cc** in **Chrome**.
+1. If an **Install** banner appears, tap it — you’re done.
+1. Otherwise tap the **⋮** menu (top-right) → **Install app** / **Add to Home screen**.
+1. Confirm, then open Evolve from its home-screen icon.
 
-You renamed the repo to **EvolveApp**, so the GitHub Pages URL is now
-`https://wigglez-sudo.github.io/EvolveApp/` (was `…/EvolveAppTest/`). GitHub
-usually redirects the old address, but don't rely on it forever. Anyone who
-installed the PWA from the old URL should re-add it from the new one.
+> Once it’s on your home screen, Evolve runs full-screen and works without a
+> connection.
 
-The app itself works at any URL because everything in it is relative — the
-rename doesn't break the app, food packs, or backups.
+-----
 
----
+## Your privacy
 
-## Editing the copy
+Evolve runs entirely in your browser. There are **no accounts** and **no servers**
+logging your training. The only time anything leaves your device is when **you**
+choose to — saving an encrypted backup, or using the optional AI Coach with your
+own key.
 
-Everything is in `index.html` as plain text — feature names, FAQ answers, the
-shop list, the footer version string ("Version 1.0"). Change wording directly;
-there's no template layer. Keep the brand colours as-is (they're CSS variables at
-the top, copied from the app) so the site and app stay visually in sync.
+- No sign-up · No tracking · No ads
+- Works fully offline
+- You own your data
+
+To move your data to a new phone, create an **encrypted backup** in the app and
+restore it with your password.
+
+-----
+
+## Questions or feedback
+
+Found a bug, or have an idea to make Evolve better?
+
+📧 **[evolveappcc@proton.me](mailto:evolveappcc@proton.me)**
+
+-----
+
+<div align="center">
+
+**Evolve** — *Private. Offline-first. Yours.*
+
+</div>
