@@ -189,12 +189,16 @@ footer .ver{margin-top:8px;font-size:12px}
   .rail{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    gap:16px;
     overflow:visible;
     margin:0;
     padding:4px 0 8px;
+    align-items:start;
   }
-  .pcard{flex:initial;max-width:none;width:auto}
+  .pcard{flex:initial;max-width:none;width:auto;padding:20px}
+  .pcard h3{font-size:18px;margin-bottom:10px}
+  .pcard li{font-size:13px;margin:7px 0}
+  .pcard .glow{width:150px;height:150px;filter:blur(60px);top:-50px;right:-50px}
   .rail-hint{display:none}
 }
 
