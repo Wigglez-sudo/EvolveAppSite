@@ -263,7 +263,7 @@
   <header class="bar">
     <div class="wrap bar-in">
       <a class="brand" href="#top"><img src="icon-512.png" alt="Evolve logo" /><span>Evolve</span></a>
-      <a class="cta-sm" href="#open">Open app</a>
+      <a class="cta-sm" href="#install">Install</a>
     </div>
   </header>
 
@@ -279,8 +279,7 @@
       <span class="dot p"></span><b>Progress</b>
     </div>
     <div class="cta-row">
-      <a class="btn btn-primary" id="open" href="#" data-app-link>⚡ Open Evolve</a>
-      <a class="btn btn-ghost" href="#install">📲 How to install</a>
+      <a class="btn btn-primary" href="#install">📲 How to install</a>
     </div>
     <div class="reassure">
       <span><span class="dot f"></span> No account needed</span>
@@ -382,7 +381,7 @@
 
     <!-- iOS -->
     <div class="steps" id="ios-steps">
-      <div class="step reveal"><div><b>Open in Safari</b><span>Tap <a href="#open" data-app-link style="color:var(--strength);border-bottom:1px solid var(--line2)">Open Evolve</a>. On iPhone, installing only works from <b>Safari</b> — not Chrome.</span></div></div>
+      <div class="step reveal"><div><b>Open this site in Safari</b><span>On iPhone, installing only works from <b>Safari</b> — not Chrome. If you’re reading this in another app, open <b>evolveapp.cc</b> in Safari first.</span></div></div>
       <div class="step reveal"><div><b>Tap the Share button</b><span>It’s the <span class="kbd">⬆️ square with an arrow</span> at the bottom (or top) of Safari.</span></div></div>
       <div class="step reveal"><div><b>Choose “Add to Home Screen”</b><span>Scroll the share sheet until you see <span class="kbd">Add to Home Screen</span> and tap it.</span></div></div>
       <div class="step reveal"><div><b>Tap “Add”</b><span>Confirm in the top-right. The Evolve icon now sits on your home screen.</span></div></div>
@@ -391,14 +390,14 @@
 
     <!-- Android -->
     <div class="steps hidden" id="android-steps">
-      <div class="step reveal"><div><b>Open in Chrome</b><span>Tap <a href="#open" data-app-link style="color:var(--strength);border-bottom:1px solid var(--line2)">Open Evolve</a> in <b>Chrome</b> (or your default browser).</span></div></div>
+      <div class="step reveal"><div><b>Open this site in Chrome</b><span>Make sure you’re viewing <b>evolveapp.cc</b> in <b>Chrome</b> (or your default browser).</span></div></div>
       <div class="step reveal"><div><b>Look for the install prompt</b><span>A banner may appear automatically — tap <span class="kbd">Install</span>. If it does, you’re done.</span></div></div>
       <div class="step reveal"><div><b>Or open the ⋮ menu</b><span>Tap the three dots, top-right.</span></div></div>
       <div class="step reveal"><div><b>Tap “Install app”</b><span>Choose <span class="kbd">Install app</span> (or <span class="kbd">Add to Home screen</span>), then confirm.</span></div></div>
       <div class="step reveal"><div><b>Open it from the icon</b><span>Launch Evolve from your home screen for the full-screen, offline experience.</span></div></div>
     </div>
 
-    <p class="install-note">No install needed to try it — the <a href="#open" data-app-link style="color:var(--muted);border-bottom:1px solid var(--line2)">Open Evolve</a> link works in any browser. Installing just makes it full-screen and offline-ready.</p>
+    <p class="install-note">Once it’s on your home screen, open Evolve from its icon — it runs full-screen and works offline.</p>
   </section>
 
   <!-- ===================== FOOD PACKS ===================== -->
@@ -438,8 +437,7 @@
     <h2>Ready to evolve?</h2>
     <p>Open it now, then add it to your home screen.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#" data-app-link>⚡ Open Evolve</a>
-      <a class="btn btn-ghost" href="#install">📲 How to install</a>
+      <a class="btn btn-primary" href="#install">📲 How to install</a>
     </div>
   </section>
 
@@ -456,17 +454,6 @@
 </div>
 
 <script>
-  /* ---- ONE place to set where "Open Evolve" goes ----
-     Point this at wherever the actual Evolve app is hosted.
-     Examples:
-       "/app/"                                  (app in an /app/ folder on this same domain)
-       "https://app.evolveapp.cc/"              (app on a subdomain)
-       "https://wigglez-sudo.github.io/EvolveApp/" (app on GitHub Pages)
-  */
-  var APP_URL = "https://wigglez-sudo.github.io/EvolveApp/";
-
-  document.querySelectorAll("[data-app-link]").forEach(function(a){ a.setAttribute("href", APP_URL); });
-
   /* ---- install tabs: default to the visitor's platform ---- */
   var isAndroid = /android/i.test(navigator.userAgent);
   function showOS(os){
