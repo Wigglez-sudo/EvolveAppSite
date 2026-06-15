@@ -183,7 +183,20 @@ footer .ver{margin-top:8px;font-size:12px}
   .cta-row .btn{min-width:220px}
   .pcard{flex-basis:46%}
 }
-@media(min-width:1000px){ .feat-grid{grid-template-columns:repeat(3,1fr)} .pcard{flex-basis:31%} }
+@media(min-width:1000px){
+  .feat-grid{grid-template-columns:repeat(3,1fr)}
+  /* desktop: pillars become an even, centered 3-up grid instead of a left-aligned scroll rail */
+  .rail{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    overflow:visible;
+    margin:0;
+    padding:4px 0 8px;
+  }
+  .pcard{flex:initial;max-width:none;width:auto}
+  .rail-hint{display:none}
+}
 
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important}

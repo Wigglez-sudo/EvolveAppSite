@@ -42,6 +42,18 @@
   .mini .sheet .row .add{color:var(--strength)}
   .mini .pulse{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-size:18px;animation:up 1.8s ease-in-out infinite}
   @keyframes up{0%,100%{transform:translateX(-50%) translateY(0);opacity:.6}50%{transform:translateX(-50%) translateY(-5px);opacity:1}}
+  /* QR — scan from desktop to open the app on your phone */
+  .qr-card{max-width:560px;margin:26px auto 0;background:linear-gradient(180deg,var(--surface),var(--ink2));border:1px solid var(--line2);border-radius:var(--r-lg);padding:22px;display:flex;gap:20px;align-items:center}
+  .qr-card .qbox{flex:0 0 auto;width:146px;height:146px;border-radius:16px;background:#fff;padding:10px;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+  .qr-card .qbox img{width:100%;height:100%;display:block}
+  .qr-card .qt{flex:1 1 auto}
+  .qr-card .qt .eyebrow{margin-bottom:8px}
+  .qr-card .qt b{display:block;font-size:17px;font-weight:800;margin-bottom:6px;letter-spacing:-.01em}
+  .qr-card .qt p{color:var(--muted);font-size:13.5px;line-height:1.55}
+  @media(max-width:520px){
+    .qr-card{flex-direction:column;text-align:center}
+    .qr-card .qt .eyebrow{text-align:center}
+  }
 </style>
 </head>
 <body>
@@ -59,6 +71,17 @@
     <div class="eyebrow reveal">Get it on your phone</div>
     <h1 class="reveal d1">Install <span class="grad">Evolve</span></h1>
     <p class="reveal d2">No App Store needed. Read the steps, open the app, then add it to your home screen — full-screen and offline.</p>
+  </div>
+
+  <div class="wrap">
+    <div class="qr-card reveal d2">
+      <div class="qbox"><img src="qr-app.png" alt="QR code to open the Evolve app" width="146" height="146" /></div>
+      <div class="qt">
+        <div class="eyebrow">On a computer?</div>
+        <b>Scan to open Evolve on your phone</b>
+        <p>Point your phone camera at this code to open the app, then follow the steps below to add it to your home screen. Already on your phone? Just tap the button at the bottom.</p>
+      </div>
+    </div>
   </div>
 
   <div class="wrap">
