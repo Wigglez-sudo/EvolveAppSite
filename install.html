@@ -13,47 +13,62 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="site.css" />
 <style>
-  .ihead{text-align:center;padding:30px 0 6px}
+  .ihead{text-align:center;padding:40px 0 8px}
   .ihead h1{font-size:clamp(32px,8.5vw,52px);font-weight:900;letter-spacing:-.035em;margin-top:10px}
   .ihead h1 .grad{background:var(--grad-e);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .ihead p{color:var(--muted);max-width:30ch;margin:14px auto 0;font-size:15.5px}
-  .back{font-size:13px;color:var(--muted);font-weight:600}
-  /* tabs */
-  .tabs{display:flex;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px;max-width:330px;margin:26px auto 22px}
-  .tab{flex:1;text-align:center;font-size:14.5px;font-weight:700;color:var(--muted);padding:12px 10px;border-radius:999px;cursor:pointer;border:none;background:none;font-family:inherit;transition:.18s}
+  .ihead p{color:var(--muted);max-width:32ch;margin:16px auto 0;font-size:15.5px;line-height:1.55}
+
+  /* os tabs */
+  .tabs{display:flex;gap:8px;background:var(--surface);border:1px solid var(--line);
+    border-radius:999px;padding:5px;max-width:330px;margin:28px auto 24px}
+  .tab{flex:1;text-align:center;font-size:14.5px;font-weight:700;color:var(--muted);
+    padding:12px 10px;border-radius:999px;cursor:pointer;border:none;background:none;
+    font-family:inherit;transition:.18s}
   .tab.on{background:var(--grad-e);color:#1a0c04}
+  .tab:not(.on):hover{color:var(--text)}
+
   /* steps */
-  .isteps{display:grid;gap:12px;max-width:560px;margin:0 auto}
-  .isteps.hidden{display:none}
-  .istep{display:flex;gap:15px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:17px 18px}
-  .istep .n{flex:0 0 auto;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;color:#1a0c04;background:var(--grad-e)}
-  .istep b{display:block;font-size:15.5px;margin-bottom:3px}
-  .istep span{color:var(--muted);font-size:13.5px;line-height:1.5}
-  .kbd{display:inline-block;background:var(--surface3);border:1px solid var(--line2);border-radius:7px;padding:1px 7px;font-size:12.5px;font-weight:600;color:var(--text);margin:0 1px}
+  .isteps{display:none;gap:12px;max-width:560px;margin:0 auto}
+  .isteps.visible{display:grid}
+  .istep{display:flex;gap:16px;align-items:flex-start;background:var(--surface);
+    border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;
+    transition:border-color .2s}
+  .istep:hover{border-color:var(--line2)}
+  .istep .n{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:flex;
+    align-items:center;justify-content:center;font-weight:900;font-size:15px;
+    color:#1a0c04;background:var(--grad-e)}
+  .istep b{display:block;font-size:15.5px;margin-bottom:4px}
+  .istep span{color:var(--muted);font-size:13.5px;line-height:1.55}
+  .kbd{display:inline-block;background:var(--surface3);border:1px solid var(--line2);
+    border-radius:7px;padding:1px 7px;font-size:12.5px;font-weight:600;color:var(--text);margin:0 1px}
+
+  /* visual hint */
+  .ill{max-width:560px;margin:28px auto 0;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  .hint-card{background:var(--surface);border:1px solid var(--line2);border-radius:var(--r);
+    padding:18px 20px;flex:1;min-width:200px;max-width:260px;text-align:center}
+  .hint-card .hico{font-size:32px;margin-bottom:10px}
+  .hint-card b{display:block;font-size:14px;font-weight:700;margin-bottom:4px}
+  .hint-card span{font-size:13px;color:var(--muted)}
+
   /* launch */
-  .launch{max-width:560px;margin:24px auto 0}
+  .launch{max-width:560px;margin:28px auto 0}
   .launch .btn{font-size:17px}
-  .launch-note{text-align:center;font-size:12.5px;color:var(--muted2);margin:10px auto 0;max-width:38ch}
-  /* mini phone showing share→add */
-  .ill{max-width:560px;margin:28px auto 0;display:flex;justify-content:center}
-  .mini{width:200px;height:118px;border-radius:18px;border:1px solid var(--line2);background:linear-gradient(180deg,var(--surface),var(--ink2));position:relative;overflow:hidden;box-shadow:var(--shadow,0 14px 40px rgba(0,0,0,.5))}
-  .mini .sheet{position:absolute;left:10px;right:10px;bottom:10px;background:var(--surface2);border:1px solid var(--line2);border-radius:12px;padding:9px;font-size:11px}
-  .mini .sheet .row{display:flex;align-items:center;justify-content:space-between;color:var(--text);font-weight:700}
-  .mini .sheet .row .add{color:var(--strength)}
-  .mini .pulse{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-size:18px;animation:up 1.8s ease-in-out infinite}
-  @keyframes up{0%,100%{transform:translateX(-50%) translateY(0);opacity:.6}50%{transform:translateX(-50%) translateY(-5px);opacity:1}}
-  /* QR — scan from desktop to open the app on your phone */
-  .qr-card{max-width:560px;margin:26px auto 0;background:linear-gradient(180deg,var(--surface),var(--ink2));border:1px solid var(--line2);border-radius:var(--r-lg);padding:22px;display:flex;gap:20px;align-items:center}
-  .qr-card .qbox{flex:0 0 auto;width:146px;height:146px;border-radius:16px;background:#fff;padding:10px;box-shadow:0 10px 30px rgba(0,0,0,.45)}
-  .qr-card .qbox img{width:100%;height:100%;display:block}
-  .qr-card .qt{flex:1 1 auto}
-  .qr-card .qt .eyebrow{margin-bottom:8px}
-  .qr-card .qt b{display:block;font-size:17px;font-weight:800;margin-bottom:6px;letter-spacing:-.01em}
-  .qr-card .qt p{color:var(--muted);font-size:13.5px;line-height:1.55}
-  @media(max-width:520px){
-    .qr-card{flex-direction:column;text-align:center}
-    .qr-card .qt .eyebrow{text-align:center}
-  }
+  .launch-note{text-align:center;font-size:12.5px;color:var(--muted2);margin:12px auto 0;max-width:40ch;line-height:1.55}
+
+/* QR section */
+.qr-section{padding:64px 0}
+.qr-wrap{display:flex;align-items:center;gap:40px;background:var(--surface);
+  border:1px solid var(--line2);border-radius:var(--r-lg);padding:36px;flex-wrap:wrap}
+.qr-copy{flex:1;min-width:220px}
+.qr-copy h2{font-size:clamp(22px,4vw,32px);margin:10px 0 12px}
+.qr-copy p{color:var(--muted);font-size:15px;max-width:38ch}
+.qr-url{margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--muted2);font-family:monospace}
+.qr-img-wrap{flex:0 0 auto;display:block;border-radius:14px;overflow:hidden;
+  transition:transform .2s,box-shadow .2s;box-shadow:0 8px 28px rgba(0,0,0,.4)}
+.qr-img-wrap:hover{transform:scale(1.04);box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.qr-img{display:block;width:180px;height:180px;image-rendering:pixelated}
+@media(max-width:639px){.qr-section{display:none}}
+
 </style>
 </head>
 <body>
@@ -63,67 +78,122 @@
   <header class="bar">
     <div class="wrap bar-in">
       <a class="brand" href="index.html"><img src="icon-512.png" alt="Evolve logo" /><span>Evolve</span></a>
-      <a class="back" href="index.html">← Back</a>
+      <a class="btn btn-ghost" href="index.html" style="padding:8px 16px;font-size:13px">← Back</a>
     </div>
   </header>
 
   <div class="ihead wrap">
     <div class="eyebrow reveal">Get it on your phone</div>
     <h1 class="reveal d1">Install <span class="grad">Evolve</span></h1>
-    <p class="reveal d2">No App Store needed. Read the steps, open the app, then add it to your home screen — full-screen and offline.</p>
+    <p class="reveal d2">No App Store needed. Open the app in your browser, then save it to your home screen — it runs full-screen and works offline.</p>
   </div>
 
-  <div class="wrap">
-    <div class="qr-card reveal d2">
-      <div class="qbox"><img src="qr-app.png" alt="QR code to open the Evolve app" width="146" height="146" /></div>
-      <div class="qt">
-        <div class="eyebrow">On a computer?</div>
-        <b>Scan to open Evolve on your phone</b>
-        <p>Point your phone camera at this code to open the app, then follow the steps below to add it to your home screen. Already on your phone? Just tap the button at the bottom.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="wrap">
+  <div class="wrap" style="padding-top:8px">
     <div class="tabs reveal d2" role="tablist">
       <button class="tab on" data-os="ios" role="tab">iPhone / iPad</button>
       <button class="tab" data-os="android" role="tab">Android</button>
     </div>
 
-    <!-- iOS -->
+    <!-- iOS steps -->
     <div class="isteps" id="ios">
-      <div class="istep reveal"><span class="n">1</span><div><b>Open the app in Safari</b><span>Tap <b>“⚡ Open the Evolve app”</b> below. On iPhone this must be <b>Safari</b> — not Chrome. Let it load.</span></div></div>
-      <div class="istep reveal"><span class="n">2</span><div><b>Tap the Share button</b><span>The <span class="kbd">⬆️ square with an arrow</span>, at the bottom (or top) of Safari.</span></div></div>
-      <div class="istep reveal"><span class="n">3</span><div><b>Choose “Add to Home Screen”</b><span>Scroll the share sheet to <span class="kbd">Add to Home Screen</span> and tap it.</span></div></div>
-      <div class="istep reveal"><span class="n">4</span><div><b>Tap “Add”</b><span>Confirm top-right. The Evolve app icon lands on your home screen.</span></div></div>
-      <div class="istep reveal"><span class="n">5</span><div><b>Open it from the icon</b><span>Launch Evolve from the icon so it runs full-screen and offline.</span></div></div>
-    </div>
-
-    <!-- Android -->
-    <div class="isteps hidden" id="android">
-      <div class="istep reveal"><span class="n">1</span><div><b>Open the app in Chrome</b><span>Tap <b>“⚡ Open the Evolve app”</b> below in <b>Chrome</b> (or your default browser).</span></div></div>
-      <div class="istep reveal"><span class="n">2</span><div><b>Look for the install prompt</b><span>The app may show an <span class="kbd">Install</span> banner — tap it and you’re done.</span></div></div>
-      <div class="istep reveal"><span class="n">3</span><div><b>Or open the ⋮ menu</b><span>Tap the three dots, top-right.</span></div></div>
-      <div class="istep reveal"><span class="n">4</span><div><b>Tap “Install app”</b><span>Choose <span class="kbd">Install app</span> (or <span class="kbd">Add to Home screen</span>), then confirm.</span></div></div>
-      <div class="istep reveal"><span class="n">5</span><div><b>Open it from the icon</b><span>Launch Evolve from your home screen for the full-screen, offline experience.</span></div></div>
-    </div>
-
-    <div class="ill reveal">
-      <div class="mini">
-        <div class="pulse">⬆️</div>
-        <div class="sheet">
-          <div class="row">Add to Home Screen <span class="add">＋</span></div>
-        </div>
+      <div class="istep reveal">
+        <span class="n">1</span>
+        <div><b>Open the app in Safari</b>
+        <span>Tap <b>"⚡ Open the Evolve app"</b> below. On iPhone this must be <b>Safari</b> — Chrome and other browsers don't support home screen install on iOS.</span></div>
+      </div>
+      <div class="istep reveal">
+        <span class="n">2</span>
+        <div><b>Tap the Share button</b>
+        <span>The <span class="kbd">⬆️</span> icon at the bottom of Safari (or top on iPad). If you don't see it, scroll up slightly.</span></div>
+      </div>
+      <div class="istep reveal">
+        <span class="n">3</span>
+        <div><b>Choose "Add to Home Screen"</b>
+        <span>Scroll the share sheet down until you see <span class="kbd">Add to Home Screen</span>, then tap it.</span></div>
+      </div>
+      <div class="istep reveal">
+        <span class="n">4</span>
+        <div><b>Tap "Add" to confirm</b>
+        <span>Top-right of the prompt. The Evolve icon will appear on your home screen.</span></div>
+      </div>
+      <div class="istep reveal">
+        <span class="n">5</span>
+        <div><b>Open from the home screen icon</b>
+        <span>Always launch from the icon (not Safari) so it runs full-screen and offline.</span></div>
       </div>
     </div>
 
-    <div class="launch reveal">
+    <!-- Android steps -->
+    <div class="isteps" id="android">
+      <div class="istep reveal">
+        <span class="n">1</span>
+        <div><b>Open the app in Chrome</b>
+        <span>Tap <b>"⚡ Open the Evolve app"</b> below in Chrome. Other browsers work too if Chrome isn't your default.</span></div>
+      </div>
+      <div class="istep reveal">
+        <span class="n">2</span>
+        <div><b>Look for the install banner</b>
+        <span>Chrome may show an <span class="kbd">Install app</span> banner at the bottom automatically — tap it and you're done.</span></div>
+      </div>
+      <div class="istep reveal">
+        <span class="n">3</span>
+        <div><b>Or tap the ⋮ menu</b>
+        <span>Three dots, top-right of Chrome.</span></div>
+      </div>
+      <div class="istep reveal">
+        <span class="n">4</span>
+        <div><b>Choose "Install app"</b>
+        <span>Tap <span class="kbd">Install app</span> or <span class="kbd">Add to Home screen</span>, then confirm in the dialog.</span></div>
+      </div>
+      <div class="istep reveal">
+        <span class="n">5</span>
+        <div><b>Open from your home screen</b>
+        <span>Launch from the icon for the full-screen, offline experience.</span></div>
+      </div>
+    </div>
+
+    <!-- visual hint cards -->
+    <div class="ill reveal">
+      <div class="hint-card">
+        <div class="hico">⬆️</div>
+        <b>Tap Share</b>
+        <span>Bottom of Safari or the ⋮ menu in Chrome</span>
+      </div>
+      <div class="hint-card">
+        <div class="hico">➕</div>
+        <b>Add to Home Screen</b>
+        <span>Scroll the sheet to find it, then confirm</span>
+      </div>
+      <div class="hint-card">
+        <div class="hico">📲</div>
+        <b>Launch from icon</b>
+        <span>Full-screen, offline, feels native</span>
+      </div>
+    </div>
+
+    <div class="launch reveal" style="margin-top:32px">
       <a class="btn btn-primary block" href="https://wigglez-sudo.github.io/EvolveApp/" target="_blank" rel="noopener">⚡ Open the Evolve app</a>
-      <p class="launch-note">Opens the app — then add <b>it</b> to your home screen using the steps above (not this info page).</p>
+      <p class="launch-note">This opens the app in your browser — then follow the steps above to add <b>it</b> (not this page) to your home screen.</p>
     </div>
   </div>
 
-  <footer style="margin-top:40px">
+    <!-- QR code — desktop visitors -->
+    <div class="sec-divider" style="margin:36px 0 0"></div>
+    <section class="wrap qr-section" style="padding:48px 0 0">
+      <div class="qr-wrap reveal">
+        <div class="qr-copy">
+          <div class="eyebrow">On a computer?</div>
+          <h2>Scan to open on your phone</h2>
+          <p>Point your camera at the code — it opens the app directly, ready to install from there.</p>
+          <div class="qr-url">wigglez-sudo.github.io/EvolveApp</div>
+        </div>
+        <a class="qr-img-wrap" href="https://wigglez-sudo.github.io/EvolveApp/" target="_blank" rel="noopener" aria-label="QR code to open Evolve">
+          <img class="qr-img" src="data:image/png;base64,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" alt="QR code — scan to open Evolve" width="180" height="180" />
+        </a>
+      </div>
+    </section>
+
+  <footer style="margin-top:56px">
     <div class="wrap">
       <div class="fbrand"><img src="icon-512.png" alt="" />Evolve</div>
       <div>Private. Offline-first. Yours.</div>
@@ -141,12 +211,12 @@
     document.querySelectorAll(".reveal").forEach(function(e){io.observe(e);});
   } else {document.querySelectorAll(".reveal").forEach(function(e){e.classList.add("in");});}
 
-  /* platform tabs, default to the visitor's OS */
+  /* platform tabs — default to visitor's OS */
   var isAndroid=/android/i.test(navigator.userAgent);
   function showOS(os){
     document.querySelectorAll(".tab").forEach(function(t){t.classList.toggle("on",t.dataset.os===os);});
-    document.getElementById("ios").classList.toggle("hidden",os!=="ios");
-    document.getElementById("android").classList.toggle("hidden",os!=="android");
+    document.getElementById("ios").classList.toggle("visible",os==="ios");
+    document.getElementById("android").classList.toggle("visible",os==="android");
   }
   document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){showOS(t.dataset.os);});});
   showOS(isAndroid?"android":"ios");

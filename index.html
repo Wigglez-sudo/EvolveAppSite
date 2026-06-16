@@ -8,34 +8,55 @@
 <meta name="theme-color" content="#0C0D11" />
 <link rel="icon" href="favicon.png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-<meta property="og:title" content="Evolve — Train smarter. Become next." />
-<meta property="og:description" content="A private, offline-first gym &amp; nutrition tracker that lives entirely on your phone." />
+<meta property="og:title" content="Evolve — Your gym. Your data. Nobody else's." />
+<meta property="og:description" content="A private, offline-first gym &amp; nutrition tracker that lives entirely on your phone. No accounts, no ads, no servers." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="icon-512.png" />
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="site.css" />
 <style>
-  /* landing-only hero */
-  .hero{padding:30px 0 8px;text-align:center}
-  .hero h1{font-size:clamp(40px,11vw,76px);font-weight:900;letter-spacing:-.04em;margin-top:8px}
+  /* ── hero (landing-only) ── */
+  .hero{padding:48px 0 16px;text-align:center}
+  .hero h1{font-size:clamp(38px,10.5vw,74px);font-weight:900;letter-spacing:-.04em;margin-top:12px;line-height:1.02}
   .hero h1 .grad{background:var(--grad-e);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero .tag{margin:16px auto 0;max-width:24ch;font-size:clamp(16px,4.6vw,20px);color:var(--muted);font-weight:500}
-  .pillrow{display:flex;align-items:center;justify-content:center;gap:9px;margin:20px 0 4px;
+  .hero .eyebrow{font-size:13px;letter-spacing:.2em;color:var(--strength2);font-weight:700}
+  .hero .tag{margin:18px auto 0;max-width:30ch;font-size:clamp(15px,4.2vw,18px);color:var(--muted);font-weight:500;line-height:1.5}
+  .pillrow{display:flex;align-items:center;justify-content:center;gap:9px;margin:22px 0 4px;
     font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--muted)}
   .pillrow b{color:var(--text)}
-  .hero .cta-row{margin-top:28px}
-  .reassure{margin-top:18px;font-size:13px;color:var(--muted2);display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero .cta-row{margin-top:32px}
+  .reassure{margin-top:20px;font-size:13px;color:var(--muted2);display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
   .reassure span{display:inline-flex;align-items:center;gap:6px}
-  .phone-stage{margin:34px auto 0;perspective:1000px}
+  .phone-stage{margin:44px auto 0;perspective:1000px}
+
   @media(min-width:880px){
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;text-align:left;gap:30px;padding:40px 0}
+    .hero{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;
+      text-align:left;gap:40px;padding:56px 0 32px}
     .hero .pillrow,.hero .reassure{justify-content:flex-start}
     .hero .cta-row{margin-left:0}
     .phone-stage{margin-top:0}
   }
+
+/* QR section — desktop only */
+.qr-section{padding:64px 0}
+.qr-wrap{display:flex;align-items:center;gap:40px;background:var(--surface);
+  border:1px solid var(--line2);border-radius:var(--r-lg);padding:36px 36px;flex-wrap:wrap}
+.qr-copy{flex:1;min-width:220px}
+.qr-copy h2{font-size:clamp(22px,4vw,32px);margin:10px 0 12px}
+.qr-copy p{color:var(--muted);font-size:15px;max-width:38ch}
+.qr-url{margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.08em;
+  color:var(--muted2);font-family:monospace}
+.qr-img-wrap{flex:0 0 auto;display:block;border-radius:14px;overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 8px 28px rgba(0,0,0,.4)}
+.qr-img-wrap:hover{transform:scale(1.04);box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.qr-img{display:block;width:180px;height:180px;image-rendering:pixelated}
+/* hide on mobile — no point scanning from the phone you're already on */
+@media(max-width:639px){.qr-section{display:none}}
+
 </style>
 </head>
 <body>
@@ -53,8 +74,8 @@
   <div class="hero wrap">
     <div class="hero-copy">
       <div class="eyebrow reveal">Gym &amp; nutrition · on your phone</div>
-      <h1 class="reveal d1">Train smarter.<br /><span class="grad">Become next.</span></h1>
-      <p class="tag reveal d2">A private gym &amp; nutrition tracker that lives entirely on your phone.</p>
+      <h1 class="reveal d1">Your gym.<br />Your data.<br /><span class="grad">Nobody else's.</span></h1>
+      <p class="tag reveal d2">A gym &amp; nutrition tracker that lives entirely on your phone — no accounts, no servers, no ads.</p>
       <div class="pillrow reveal d2">
         <span class="dot t"></span><b>Train</b>
         <span class="dot f"></span><b>Fuel</b>
@@ -121,15 +142,8 @@
     </div>
   </div>
 
-  <!-- ticker -->
-  <div class="ticker reveal">
-    <div class="ticker-track">
-      <span>Private</span><span>Offline-first</span><span>No accounts</span><span>No ads</span><span>Encrypted backups</span><span>AI Coach</span><span>Food packs</span><span>Your data, yours</span>
-      <span>Private</span><span>Offline-first</span><span>No accounts</span><span>No ads</span><span>Encrypted backups</span><span>AI Coach</span><span>Food packs</span><span>Your data, yours</span>
-    </div>
-  </div>
-
   <!-- pillars (horizontal carousel) -->
+  <div class="sec-divider"></div>
   <section class="wrap">
     <div class="sec-head reveal">
       <div class="eyebrow">What Evolve does</div>
@@ -170,28 +184,28 @@
     </div>
   </div>
   <div class="rail-hint reveal">Swipe <span class="sw">→</span></div>
+  <div class="rail-dots reveal" id="railDots"><b class="on"></b><b></b><b></b></div>
 
-  <!-- features -->
+  <!-- features — 6 strongest only -->
+  <div class="sec-divider"></div>
   <section class="wrap">
     <div class="sec-head reveal">
       <div class="eyebrow">Everything inside</div>
-      <h2>Feature-rich, not bloated</h2>
-      <p>The tools serious lifters ask for — without accounts, ads or a subscription.</p>
+      <h2>The tools serious lifters need</h2>
+      <p>No accounts, no ads, no subscription — just the features that matter.</p>
     </div>
     <div class="feat-grid">
       <div class="feat reveal"><span class="fi">🤖</span><div><b>AI Coach</b><span>Generate a ready-to-use workout, then start or save it. Your own free key — optional.</span></div></div>
-      <div class="feat reveal d1"><span class="fi">💾</span><div><b>Saved workouts</b><span>Star any session or a Coach-built one and reuse it from Train.</span></div></div>
-      <div class="feat reveal d2"><span class="fi">📋</span><div><b>Routines &amp; templates</b><span>Multi-day programs from PPL, Upper/Lower or Full-Body starters.</span></div></div>
-      <div class="feat reveal"><span class="fi">🏃</span><div><b>Cardio timer</b><span>A ready screen that waits for you, and resumes mid-session.</span></div></div>
-      <div class="feat reveal d1"><span class="fi">🔒</span><div><b>Encrypted backups</b><span>Password-locked files you save or share to any cloud you choose.</span></div></div>
-      <div class="feat reveal d2"><span class="fi">🔄</span><div><b>In-app updates</b><span>An “Update available” banner — one tap to get the latest.</span></div></div>
-      <div class="feat reveal"><span class="fi">🔢</span><div><b>1RM percentages</b><span>60–95% training tables from your estimated one-rep max.</span></div></div>
-      <div class="feat reveal d1"><span class="fi">🔤</span><div><b>Make it yours</b><span>Heading fonts, water units, default rest timer, start tab.</span></div></div>
-      <div class="feat reveal d2"><span class="fi">⏱️</span><div><b>Reminders</b><span>Backup reminders and a due banner so your data is safe.</span></div></div>
+      <div class="feat reveal d1"><span class="fi">📋</span><div><b>Routines &amp; programs</b><span>Multi-day programs from PPL, Upper/Lower or Full-Body starters — save any session as a template.</span></div></div>
+      <div class="feat reveal d2"><span class="fi">🔒</span><div><b>Encrypted backups</b><span>Password-locked files you save or share to any cloud you choose. Your data, portable and private.</span></div></div>
+      <div class="feat reveal"><span class="fi">🔢</span><div><b>1RM &amp; plate calculator</b><span>60–95% training tables from your estimated one-rep max, plus instant plate math for the bar.</span></div></div>
+      <div class="feat reveal d1"><span class="fi">📸</span><div><b>Progress photos</b><span>Private photos stored on-device only. See how far you've actually come — on your terms.</span></div></div>
+      <div class="feat reveal d2"><span class="fi">🔤</span><div><b>Make it yours</b><span>Heading fonts, water units, default rest timer, start tab — small things that add up.</span></div></div>
     </div>
   </section>
 
   <!-- privacy -->
+  <div class="sec-divider"></div>
   <section class="wrap">
     <div class="privacy reveal">
       <div class="eyebrow">Privacy-first by design</div>
@@ -204,39 +218,58 @@
   </section>
 
   <!-- food packs -->
+  <div class="sec-divider"></div>
   <section class="wrap">
     <div class="packs reveal">
       <div class="eyebrow">Optional add-on</div>
       <h2>UK supermarket food packs</h2>
-      <p>Download big food databases for the shops you actually use, inside the app (Settings → Food packs). Their foods fold into your normal search and work offline. They’re public food lists — nothing about you is ever uploaded.</p>
-      <div class="shops"><span>🛒 Tesco</span><span>🛒 Sainsbury’s</span><span>🛒 Asda</span><span>🛒 Aldi</span></div>
+      <p>Download big food databases for the shops you actually use — inside the app under Settings → Food packs. Their foods fold into your normal search and work offline. Public food lists only; nothing about you is ever uploaded.</p>
+      <div class="shops"><span>🛒 Tesco</span><span>🛒 Sainsbury's</span><span>🛒 Asda</span><span>🛒 Aldi</span></div>
     </div>
   </section>
 
   <!-- faq -->
+  <div class="sec-divider"></div>
   <section class="wrap faq">
     <div class="sec-head reveal">
       <div class="eyebrow">Good to know</div>
       <h2>Questions, answered</h2>
     </div>
     <details class="reveal"><summary>Is it really free?<span class="pl">+</span></summary><div class="ans">Yes. Evolve is free, with no ads and no subscription. The only optional cost is the AI Coach, and only if you pick a paid model with your own API key — the free options work too.</div></details>
-    <details class="reveal"><summary>Do I need an account?<span class="pl">+</span></summary><div class="ans">No. There’s no sign-up and no login. You open the app and start — everything is stored on your device.</div></details>
-    <details class="reveal"><summary>Where is my data stored?<span class="pl">+</span></summary><div class="ans"><b>On your phone, only.</b> To move data between devices, you create an <b>encrypted backup file</b> and restore it with your password.</div></details>
+    <details class="reveal"><summary>Do I need an account?<span class="pl">+</span></summary><div class="ans">No. There's no sign-up and no login. You open the app and start — everything is stored on your device.</div></details>
+    <details class="reveal"><summary>Where is my data stored?<span class="pl">+</span></summary><div class="ans"><b>On your phone, only.</b> To move data between devices, create an <b>encrypted backup file</b> and restore it with your password.</div></details>
     <details class="reveal"><summary>Does it work offline?<span class="pl">+</span></summary><div class="ans">Yes — once opened, Evolve works without a connection. You only need internet for updates, food packs, or the AI Coach.</div></details>
-    <details class="reveal"><summary>How do updates work?<span class="pl">+</span></summary><div class="ans">When a new version ships, Evolve shows an “Update available” banner. One tap updates it, and your data is preserved.</div></details>
+    <details class="reveal"><summary>How do updates work?<span class="pl">+</span></summary><div class="ans">When a new version ships, Evolve shows an "Update available" banner. One tap updates it, and your data is preserved.</div></details>
 
     <div class="contact reveal">
-      <div class="eyebrow">Feedback or a problem?</div>
-      <p>Found a bug, or have an idea to make Evolve better? I’d love to hear it.</p>
+      <div class="eyebrow">Feedback or a bug?</div>
+      <p>Found something off, or have an idea? I'd love to hear it.</p>
       <a class="btn btn-ghost" href="mailto:evolveappcc@proton.me?subject=Evolve%20feedback">✉️ evolveappcc@proton.me</a>
     </div>
   </section>
 
+  <!-- QR code — desktop visitors only -->
+  <div class="sec-divider"></div>
+  <section class="wrap qr-section">
+    <div class="qr-wrap reveal">
+      <div class="qr-copy">
+        <div class="eyebrow">On a computer?</div>
+        <h2>Scan to open on your phone</h2>
+        <p>Point your phone camera at the code — it opens the app straight away, ready to install.</p>
+        <div class="qr-url">wigglez-sudo.github.io/EvolveApp</div>
+      </div>
+      <a class="qr-img-wrap" href="https://wigglez-sudo.github.io/EvolveApp/" target="_blank" rel="noopener" aria-label="Scan QR code to open Evolve app">
+        <img class="qr-img" src="data:image/png;base64,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" alt="QR code — scan to open Evolve app" width="180" height="180" />
+      </a>
+    </div>
+  </section>
+
   <!-- final CTA -->
+  <div class="sec-divider"></div>
   <section class="final wrap">
-    <h2>Ready to evolve?</h2>
-    <p>Add it to your home screen — it takes under a minute.</p>
-    <div class="cta-row">
+    <h2 class="reveal">Ready to evolve?</h2>
+    <p class="reveal d1">Add it to your home screen — it takes under a minute.</p>
+    <div class="cta-row reveal d2">
       <a class="btn btn-primary" href="install.html">📲 How to install</a>
       <a class="btn btn-ghost" href="https://wigglez-sudo.github.io/EvolveApp/" target="_blank" rel="noopener">⚡ Open the app</a>
     </div>
@@ -272,6 +305,21 @@
       i=(i+1)%scrs.length;
       scrs[i].classList.add("on"); dots[i].classList.add("on");
     }, reduce?6000:3200);
+  })();
+
+  /* pillar carousel dot sync */
+  (function(){
+    var rail=document.getElementById("rail");
+    var dots=document.querySelectorAll("#railDots b");
+    if(!rail||!dots.length) return;
+    var cards=rail.querySelectorAll(".pcard");
+    if(!cards.length) return;
+    function updateDots(){
+      var cardW=cards[0].offsetWidth+14;
+      var idx=Math.round(rail.scrollLeft/cardW);
+      dots.forEach(function(d,i){d.classList.toggle("on",i===idx);});
+    }
+    rail.addEventListener("scroll",updateDots,{passive:true});
   })();
 </script>
 </body>
